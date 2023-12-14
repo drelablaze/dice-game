@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="exp.css" />
+    <title>Pig Game</title>
+  </head>
+  <body>
+    <div class="sign-container">
+      <div class="signs">
+        <div class="allsign top-sign">
+          <div class="play-sign">
+            <div class="play"></div>
+            <p class="play-letter">ACTIVE</p>
+          </div>
+          <div class="stop-sign">
+            <div class="stop"></div>
+            <p class="stop-letter">STOP</p>
+          </div>
+        </div>
+        <div class="allsign">
+          <div class="play-sign">
+            <div class="play"></div>
+            <p class="play-letter">ACTIVE</p>
+          </div>
+          <div class="stop-sign">
+            <div class="stop"></div>
+            <p class="stop-letter">STOP</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="play-sign hidden">
+        <div class="play-1">
+          <div class="play"></div>
+          <p class="play-letter">ACTIVE</p>
+        </div>
+        <div class="stop-1">
+          <div class="stop"></div>
+          <p class="stop-letter">STOP</p>
+        </div>
+      </div> -->
+    </div>
+    <main>
+      <div class="main-container">
+        <section class="player player--0 player--active">
+          <h2 class="name" id="name--0">Player 1</h2>
+          <p class="score" id="score--0">43</p>
+          <div class="current">
+            <p class="current-label">Current</p>
+            <p class="current-score" id="current--0">0</p>
+          </div>
+        </section>
+        <section class="player player--1">
+          <h2 class="name" id="name--1">Player 2</h2>
+          <p class="score" id="score--1">24</p>
+          <div class="current">
+            <p class="current-label">Current</p>
+            <p class="current-score" id="current--1">0</p>
+          </div>
+        </section>
+
+        <!-- <div class="svg-container">
+          <svg
+            class="dice"
+            width="1920"
+            height="1080"
+            viewBox="0 0 1920 1080"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="Desktop - 1">
+              <g id="dice-3-svgrepo-com 1" filter="url(#filter0_dddddddd_602_10)">
+                <path
+                  d="M560 340C560 245.719 560 198.579 589.289 169.289C618.579 140 665.719 140 760 140H1160C1254.28 140 1301.42 140 1330.71 169.289C1360 198.579 1360 245.719 1360 340V740C1360 834.281 1360 881.421 1330.71 910.711C1301.42 940 1254.28 940 1160 940H760C665.719 940 618.579 940 589.289 910.711C560 881.421 560 834.281 560 740V340Z"
+                  fill="#C7365F"
+                />
+                <path
+                  id="corner"
+                  d="M1198.56 204.813C1223.92 204.813 1248.25 214.887 1266.18 232.82C1284.11 250.754 1294.19 275.076 1294.19 300.438V778.563C1294.19 803.924 1284.11 828.246 1266.18 846.18C1248.25 864.113 1223.92 874.188 1198.56 874.188H720.438C695.076 874.188 670.754 864.113 652.82 846.18C634.887 828.246 624.813 803.924 624.813 778.563V300.438C624.813 275.076 634.887 250.754 652.82 232.82C670.754 214.887 695.076 204.813 720.438 204.813H1198.56ZM720.438 157C682.396 157 645.912 172.112 619.012 199.012C592.112 225.912 577 262.396 577 300.438V778.563C577 816.604 592.112 853.088 619.012 879.988C645.912 906.888 682.396 922 720.438 922L959.5 874.188L1198.56 922C1236.6 922 1273.09 906.888 1299.99 879.988C1326.89 853.088 1342 816.604 1342 778.563V300.438C1342 262.396 1326.89 225.912 1299.99 199.012C1273.09 172.112 1236.6 157 1198.56 157L959.5 204.813L720.438 157Z"
+                  fill="#FBFBFB"
+                />
+                <g id="dots" filter="url(#filter1_dddddddd_602_10)">
+                  <path
+                    d="M835 340C835 359.891 827.098 378.968 813.033 393.033C798.968 407.098 779.891 415 760 415C740.109 415 721.032 407.098 706.967 393.033C692.902 378.968 685 359.891 685 340C685 320.109 692.902 301.032 706.967 286.967C721.032 272.902 740.109 265 760 265C779.891 265 798.968 272.902 813.033 286.967C827.098 301.032 835 320.109 835 340ZM1235 740C1235 759.891 1227.1 778.968 1213.03 793.033C1198.97 807.098 1179.89 815 1160 815C1140.11 815 1121.03 807.098 1106.97 793.033C1092.9 778.968 1085 759.891 1085 740C1085 720.109 1092.9 701.032 1106.97 686.967C1121.03 672.902 1140.11 665 1160 665C1179.89 665 1198.97 672.902 1213.03 686.967C1227.1 701.032 1235 720.109 1235 740ZM1035 540C1035 559.891 1027.1 578.968 1013.03 593.033C998.968 607.098 979.891 615 960 615C940.109 615 921.032 607.098 906.967 593.033C892.902 578.968 885 559.891 885 540C885 520.109 892.902 501.032 906.967 486.967C921.032 472.902 940.109 465 960 465C979.891 465 998.968 472.902 1013.03 486.967C1027.1 501.032 1035 520.109 1035 540Z"
+                    fill="#FBFBFB"
+                  />
+                </g>
+              </g>
+            </g>
+            <defs>
+              <filter
+                id="filter0_dddddddd_602_10"
+                x="556"
+                y="140"
+                width="808"
+                height="808"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow_602_10"
+                />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="effect1_dropShadow_602_10"
+                  result="effect2_dropShadow_602_10"
+                />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="effect2_dropShadow_602_10"
+                  result="effect3_dropShadow_602_10"
+                />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="effect3_dropShadow_602_10"
+                  result="effect4_dropShadow_602_10"
+                />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="effect4_dropShadow_602_10"
+                  result="effect5_dropShadow_602_10"
+                />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="effect5_dropShadow_602_10"
+                  result="effect6_dropShadow_602_10"
+                />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="effect6_dropShadow_602_10"
+                  result="effect7_dropShadow_602_10"
+                />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="effect7_dropShadow_602_10"
+                  result="effect8_dropShadow_602_10"
+                />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect8_dropShadow_602_10"
+                  result="shape"
+                />
+              </filter>
+              <filter
+                id="filter1_dddddddd_602_10"
+                x="681"
+                y="265"
+                width="558"
+                height="558"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow_602_10"
+                />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="effect1_dropShadow_602_10"
+                  result="effect2_dropShadow_602_10"
+                />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="effect2_dropShadow_602_10"
+                  result="effect3_dropShadow_602_10"
+                />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="effect3_dropShadow_602_10"
+                  result="effect4_dropShadow_602_10"
+                />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="effect4_dropShadow_602_10"
+                  result="effect5_dropShadow_602_10"
+                />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="effect5_dropShadow_602_10"
+                  result="effect6_dropShadow_602_10"
+                />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="effect6_dropShadow_602_10"
+                  result="effect7_dropShadow_602_10"
+                />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="effect7_dropShadow_602_10"
+                  result="effect8_dropShadow_602_10"
+                />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect8_dropShadow_602_10"
+                  result="shape"
+                />
+              </filter>
+            </defs>
+          </svg>
+        </div> -->
+        <img src="figma-1.svg" alt="Playing dice" class="dice" />
+        <button class="btn btn--new">🔄 New game</button>
+        <button class="btn btn--roll">🎲 Roll dice</button>
+        <button class="btn btn--hold">📥 Hold</button>
+      </div>
+    </main>
+    <p class="display-rolled">
+      Rolled Dice: <span class="display-dice-rolled"></span>
+    </p>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"
+      integrity="sha512-7Au1ULjlT8PP1Ygs6mDZh9NuQD0A5prSrAUiPHMXpU6g3UMd8qesVnhug5X4RoDr35x5upNpx0A6Sisz1LSTXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="exp.js"></script>
+  </body>
+</html>
